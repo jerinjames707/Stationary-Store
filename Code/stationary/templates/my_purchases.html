@@ -1,0 +1,105 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+{% if msg %}
+<script>
+    alert('{{ msg }}');
+</script>
+{% endif %}
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-color: black;
+        border-radius: 20px;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #000000;
+    }
+
+    th {
+        background-color: #81c408 !important; /* Header color */
+        color: black;
+        border-color: black;
+
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Alternate row color */
+        color: black;
+        border-color: black;
+    }
+</style>
+   <!-- Single Page Header start -->
+   <div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">My Purchases</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active text-white">Purchases</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+
+<!-- Contact Start -->
+<div class="container-fluid contact py-5">
+    <div class="container py-5">
+        <div class="p-5 bg-light rounded">
+            <div class="row g-4">
+                <center>
+              
+                   
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Items Purchased</th>
+                                <th>Total Items</th>
+                                <th>Total Amount</th>
+                                <th>Purchase Date</th>
+                                <th>Delivery Date</th>
+                            <th>View Bill</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if purchase_details %}
+                                {% for purchase_detail in purchase_details %}
+                                <tr>
+                                    <td>
+                                        {% for item_name in purchase_detail.item_names %}
+                                            {{ item_name }}<br>
+                                        {% endfor %}
+                                    </td>
+                                    <td>{{ purchase_detail.total_items }}</td>
+                                    <td>{{ purchase_detail.total_amount }}</td>
+                                    <td>{{ purchase_detail.purchase_date }}</td>
+                                    <td>{{ purchase_detail.delivery_date }}</td>
+                                <td><a class="btn btn-primary" href="view_bill/{{purchase_detail.cart_dtl}}">Bill</a></td>
+
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="5"><h1 class="mb-4"> No Purchase Found</h1> <a class="btn border-secondary rounded-pill py-3 px-5" href="view_products">Go Back To Shopping</a> </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    
+                    
+    
+            </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

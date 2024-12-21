@@ -1,0 +1,66 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+{% if msg %}
+<script>
+    alert('{{ msg }}');
+</script>
+{% endif %}
+
+   <!-- Single Page Header start -->
+   <div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Customer Registration</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active text-white">Register</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+
+<!-- Contact Start -->
+<div class="container-fluid contact py-5">
+    <div class="container py-5">
+        <div class="p-5 bg-light rounded">
+            <div class="row g-4">
+                <center>
+                <div class="col-lg-7">
+                    <form action="cus_register" method="post" class="">
+                        {% csrf_token %}
+                        <input type="text" required class="w-100 form-control border-0 py-3 mb-4" name="fname" placeholder="Your First Name">
+                        <input type="text" required class="w-100 form-control border-0 py-3 mb-4" name="lname" placeholder="Your Last Name">
+                        <input type="text" required class="w-100 form-control border-0 py-3 mb-4" name="phone" pattern="[0-9]{10}" title="Enter 10 Digits"  placeholder="Contact Number">
+                        <input type="text" required class="w-100 form-control border-0 py-3 mb-4" name="district" placeholder="District">
+                        <input type="text" required class="w-100 form-control border-0 py-3 mb-4" name="street" placeholder="Street Name">
+                        
+                        <select required class="w-100 form-control border-0 py-3 mb-4" name="gender">
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    
+                        <label for="">Date of Birth</label>
+                        <input required type="date" class="w-100 form-control border-0 py-3 mb-4" name="dob" placeholder="Date of Birth">
+                        
+                        <input required type="email" class="w-100 form-control border-0 py-3 mb-4" name="email" placeholder="Enter Your Email">
+                        <input required type="password" class="w-100 form-control border-0 py-3 mb-4" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must Contain 8 characters with caps , small letters and number "  placeholder="Enter a Password">
+                        
+                        <!-- <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10" placeholder="Your Message"></textarea> -->
+                        <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button>
+                    </form>
+                    
+                </div><br><br>
+                Already have a account..? <a href="login">Login</a>
+            </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+
+
+   <!-- Single Page Header start -->
+   <div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Login</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active text-white">Login</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+
+<!-- Contact Start -->
+<div class="container-fluid contact py-5">
+    <div class="container py-5">
+        <div class="p-5 bg-light rounded">
+            <div class="row g-4">
+                <center>
+                <div class="col-lg-7">
+                    {% if message %}
+                    <h3 style="color: red;">{{message}}</h3>
+                    {% endif %}
+                    <form action="addlogin" method="post" class="">
+                        {% csrf_token %}
+                        
+                        
+                        <input required type="email" class="w-100 form-control border-0 py-3 mb-4" name="email" placeholder="Enter Your Email">
+                        <input required type="password" class="w-100 form-control border-0 py-3 mb-4" name="password"  placeholder="Enter a Password">
+                        
+                        <!-- <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10" placeholder="Your Message"></textarea> -->
+                        <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Login</button>
+                    </form>
+                    
+                </div><br><br>
+                Not have a account..? <a href="http://127.0.0.1:8000/cus_register">Register</a>
+            </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+{% if msg %}
+<script>
+    alert('{{ msg }}');
+</script>
+{% endif %}
+
+   <!-- Single Page Header start -->
+   <div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Profile</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active text-white">profile</li>
+    </ol>
+</div>
+<!-- Single Page Header End -->
+
+
+<!-- Contact Start -->
+<div class="container-fluid contact py-5">
+    <div class="container py-5">
+        <div class="p-5 bg-light rounded">
+            <div class="row g-4">
+                <center>
+                <div class="col-lg-7">
+                  
+
+                    <div class="container mt-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="card bg-warning text-dark">
+                                    <div class="card-body">
+                                      
+                                            <h5 class="card-title text-center">{{ result.fname }} {{ result.lname }}</h5>
+                                            <p class="card-text"><strong>Gender:</strong> {{ result.gender }}</p>
+                                            <p class="card-text"><strong>Address: </strong>{{ result.street }}, {{ result.district }}</p>
+                                            <p class="card-text"><strong>Date of Birth: </strong>{{ result.dob }}</p>
+                                            <p class="card-text"><strong>Phone: </strong>{{ result.phone }}</p>
+                                            <p class="card-text"><strong>Email:</strong> {{ result.email }}</p>
+                    
+                                           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <a href="view_cards" class="btn btn-primary rounded ">View Card Details</a>
+                    
+                </div><br><br>
+            </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

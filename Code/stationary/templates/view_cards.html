@@ -1,0 +1,62 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+{% if msg %}
+<script>
+    alert('{{ msg }}');
+</script>
+{% endif %}
+
+
+        <!-- Single Page Header start -->
+        <div class="container-fluid page-header py-5">
+            <h1 class="text-center text-white display-6">Card Details</h1>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item active text-white">Card Details</li>
+            </ol>
+        </div>
+        <!-- Single Page Header End -->
+
+
+        <!-- Cart Page Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="table-responsive">
+            <a href="add_cards" class="btn btn-primary rounded ">Add New Card Details</a>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Card Holder Name</th>
+                                <th scope="col">Card Number </th>
+                                <th scope="col">Expire Date</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in result %}
+                            
+                            <tr>
+                                <td>{{ i.card_holder }}</td>
+                                <td>{{ i.card_no }}</td>
+                                <td>{{ i.exp_date }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        
+                    </table>
+                    
+                </div>
+              
+               
+            </div>
+        </div>
+        <!-- Cart Page End -->
+
+
+        {% include 'footer.html' %}
+
+        {% endblock %}
